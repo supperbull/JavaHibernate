@@ -48,11 +48,11 @@ public class pakiet {
         this.funkcje = funkcje;
     }
 
-    public String getcena() {
+    public Double getcena() {
         return cena;
     }
 
-    public void setcena(String cena) {
+    public void setcena(Double cena) {
         this.cena = cena;
     }
     @ManyToOne
