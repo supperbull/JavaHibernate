@@ -1,12 +1,10 @@
 package domain;
 
-import domain.antywirus;
+/**
+ * Created by Redbullek on 2017-01-10.
+ */
 
 import javax.persistence.*;
-
-/**
- * Created by GSun12 on 21.12.2016.
- */
 @Entity
 @NamedQueries({
         @NamedQuery(name="model.all", query = "select p from pakiet p"),

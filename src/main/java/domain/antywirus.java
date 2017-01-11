@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "antywirus.all", query = "Select a from antywirus a"),
+        @NamedQuery(name = "antywirus.all", query = "Select a from antywirus"),
         @NamedQuery(name = "antywirus.byNazwa",query = "select a from antywirus a where a.nazwaantywirus=:name")
 
 })
@@ -20,7 +20,7 @@ public class antywirus {
     private String nazwaantywirus;
     private String opis;
     private double ocena;
-    private Collection<pakiet> pakiety;
+    private Collection<pakiet> Pakiety;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -58,10 +58,10 @@ public class antywirus {
     }
     @OneToMany(mappedBy = "category",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     public Collection<pakiet> getPakiety() {
-        return pakiety;
+        return Pakiety;
     }
 
-    public void setModels(Collection<pakiet> pakiety) {
-        this.pakiety = pakiety;
+    public void setModels(Collection<pakiet> Pakiety) {
+        this.Pakiety = Pakiety;
     }
 }
