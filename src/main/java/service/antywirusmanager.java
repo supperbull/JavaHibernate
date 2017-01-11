@@ -64,20 +64,81 @@ public class antywirusmanager implements Iantywirusmanager{
                 .setString("name",nazwa)
                 .uniqueResult();
     }
-/*
+
     @Override
     public void deleteantywirus(antywirus antywirus) {
         antywirus = (antywirus) sessionFactory.getCurrentSession()
-                .get(antywirus.class,antywirus.getId());
-        //fetchtype lazy here
-        if(antywirus.getPakiety()!=null)
-            for (antywirus antywirus1: antywirus.getPakiety()){
-                antywirus.setModels(null);
-                sessionFactory.getCurrentSession().update(antywirus);
-
-            }
+                .get(antywirus.class, antywirus.getId());
         sessionFactory.getCurrentSession().delete(antywirus);
-
     }
-    */
+
+
+    //---------------------------------------------------------------
+    //                  PAKIET
+    //---------------------------------------------------------------
+
+    @Override
+    public Long addpakiet(pakiet pakiet) {
+        pakiet.setId(null);
+        return (Long) sessionFactory.getCurrentSession()
+                .save(pakiet);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<pakiet> WszystkiePakiety() {
+        return sessionFactory
+                .getCurrentSession()
+                .getNamedQuery("pakiet.all")
+                .list();
+    }
+
+    @Override
+    public pakiet findByIdpakiet(Long id) {
+        return (pakiet) sessionFactory
+                .getCurrentSession()
+                .get(pakiet.class,id);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public pakiet findBynazwa(String prod) {
+        return (pakiet) sessionFactory
+                .getCurrentSession()
+                .getNamedQuery("pakiet.byfunkcje")
+                .setString("prod",prod)
+                .uniqueResult();
+    }
+
+    @Override
+    public void deletepakiet(pakiet pakiet) {
+        pakiet = (pakiet) sessionFactory
+                .getCurrentSession()
+                .get(pakiet.class,pakiet.getId());
+        sessionFactory.getCurrentSession().delete(pakiet);
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<antywirus>  getAllantywiruspakiet(Long id_antywirus) {
+        antywirus antywirus = (antywirus) sessionFactory.getCurrentSession()
+                .get(antywirus.class, id_antywirus);
+        List<antywirus> allCategoryModel=new ArrayList();
+        allCategoryModel=sessionFactory.getCurrentSession()
+                .getNamedQuery("pakiet.byantywirus")
+                .setLong("category",id_antywirus)
+                .list();
+
+        return allCategoryModel;
+    }
+
+    @Override
+    public void addantywirusTopakiet(Long id_antywirus, Long id_pakiet) {
+        pakiet model = (pakiet) sessionFactory.getCurrentSession()
+                .get(pakiet.class, id_pakiet);
+        antywirus antywirus = (antywirus) sessionFactory.getCurrentSession()
+                .get(antywirus.class, id_antywirus);
+        pakiet.setAntywirus(antywirus);
+    }
+
 }

@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "antywirus.all", query = "Select a from antywirus"),
+        @NamedQuery(name = "antywirus.all", query = "select a from antywirus"),
         @NamedQuery(name = "antywirus.byNazwa",query = "select a from antywirus a where a.nazwaantywirus=:name")
 
 })

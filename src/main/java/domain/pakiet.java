@@ -7,9 +7,9 @@ package domain;
 import javax.persistence.*;
 @Entity
 @NamedQueries({
-        @NamedQuery(name="model.all", query = "select p from pakiet p"),
-        @NamedQuery(name = "model.byfunkcje",query = "select p from pakiet p where p.funkcje=:funkcje "),
-        @NamedQuery(name = "model.byantywirus",query = "select b from pakiet b where b.antywirus=:antywirus")
+        @NamedQuery(name="pakiet.all", query = "select p from pakiet p"),
+        @NamedQuery(name = "pakiet.byfunkcje",query = "select p from pakiet p where p.funkcje=:funkcje "),
+        @NamedQuery(name = "pakiet.byantywirus",query = "select p from pakiet p where p.nazwaantywirus=:nazwaantywirus")
 })
 public class pakiet {
 
