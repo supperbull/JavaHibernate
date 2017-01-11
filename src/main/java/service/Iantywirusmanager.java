@@ -25,7 +25,7 @@ public interface Iantywirusmanager {
     pakiet findBynazwa(String prod);
     void deletepakiet(pakiet pakiet);
 
-    List<antywirus> getAllantywiruspakiet(Long idantywirus);
-    void addantywirusTopakiet(Long idantywirus,Long idpakiet);
+   // List<antywirus> getAllantywiruspakiet(Long idantywirus);
+   // void addantywirusTopakiet(Long idantywirus,Long idpakiet);
 
 }

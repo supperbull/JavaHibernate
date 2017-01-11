@@ -118,27 +118,27 @@ public class antywirusmanager implements Iantywirusmanager{
         sessionFactory.getCurrentSession().delete(pakiet);
     }
 
-    @Override
+   // @Override
     @SuppressWarnings("unchecked")
     public List<antywirus>  getAllantywiruspakiet(Long id_antywirus) {
         antywirus antywirus = (antywirus) sessionFactory.getCurrentSession()
                 .get(antywirus.class, id_antywirus);
         List<antywirus> allCategoryModel=new ArrayList();
         allCategoryModel=sessionFactory.getCurrentSession()
-                .getNamedQuery("pakiet.byantywirus")
+                .getNamedQuery("antywirus.bypakiet")
                 .setLong("category",id_antywirus)
                 .list();
 
         return allCategoryModel;
     }
-
+/*
     @Override
     public void addantywirusTopakiet(Long id_antywirus, Long id_pakiet) {
-        pakiet model = (pakiet) sessionFactory.getCurrentSession()
+        pakiet paczka = (pakiet) sessionFactory.getCurrentSession()
                 .get(pakiet.class, id_pakiet);
         antywirus antywirus = (antywirus) sessionFactory.getCurrentSession()
                 .get(antywirus.class, id_antywirus);
-        pakiet.setAntywirus(antywirus);
+        antywirus.setPakiety();
     }
-
+*/
 }

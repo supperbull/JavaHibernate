@@ -5,13 +5,19 @@ package domain;
  */
 
 import java.util.Collection;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "antywirus.all", query = "select a from antywirus"),
-        @NamedQuery(name = "antywirus.byNazwa",query = "select a from antywirus a where a.nazwaantywirus=:name")
+        @NamedQuery(name = "antywirus.all", query = "select a from antywirus a"),
+        @NamedQuery(name = "antywirus.byNazwa",query = "select a from antywirus a where a.nazwaantywirus= :name"),
+        @NamedQuery(name = "antywirus.bypakiet",query = "select a from antywirus a where a.Pakiety= :Pakiety")
 
 })
 public class antywirus {
@@ -61,7 +67,7 @@ public class antywirus {
         return Pakiety;
     }
 
-    public void setModels(Collection<pakiet> Pakiety) {
+    public void setPakiety(Collection<pakiet> Pakiety) {
         this.Pakiety = Pakiety;
     }
 }

@@ -9,7 +9,6 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name="pakiet.all", query = "select p from pakiet p"),
         @NamedQuery(name = "pakiet.byfunkcje",query = "select p from pakiet p where p.funkcje=:funkcje "),
-        @NamedQuery(name = "pakiet.byantywirus",query = "select p from pakiet p where p.nazwaantywirus=:nazwaantywirus")
 })
 public class pakiet {
 
@@ -17,7 +16,6 @@ public class pakiet {
     private String nazwapakiet;
     private String funkcje;
     private Double cena;
-    private antywirus antywirus;
 
     @Id
     @Column(name = "IDModel")
@@ -53,13 +51,5 @@ public class pakiet {
     public void setcena(Double cena) {
         this.cena = cena;
     }
-    @ManyToOne
-    @JoinColumn(name = "antywirus_IDantywirus")
-    public antywirus getAntywirus() {
-        return antywirus;
-    }
 
-    public void setAntywirus(antywirus antywirus) {
-        this.antywirus = antywirus;
-    }
 }
